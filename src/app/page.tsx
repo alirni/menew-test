@@ -1,17 +1,12 @@
-import { VideoCard } from "@/components/VideoCard";
+import { VirtualScrollVideoList } from "@/components/VirtualScrollVideoList";
 
 export default function Home() {
   return (
     <main
       style={{ border: "4px solid red" }}
-      className="p-4 flex flex-col gap-4 row-start-2 items-center h-full md:p-8 sm:items-start overflow-auto"
+      className="flex flex-col gap-4 row-start-2 items-center h-full sm:items-start"
     >
-      <VideoCard />
-      <VideoCard />
-
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
+      <VirtualScrollVideoList />
     </main>
   );
 }
