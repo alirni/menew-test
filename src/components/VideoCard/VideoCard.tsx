@@ -1,10 +1,10 @@
 const VideoCard = () => {
   return (
-    <div className="w-full flex justify-center items-center h-screen bg-gray-100">
+    <div className="w-full max-w-md flex justify-center items-center bg-gray-100">
       <div className="w-full rounded-lg shadow-lg bg-white overflow-hidden">
         <div className="relative">
           <video
-            className="w-full object-cover"
+            className="w-full h-48 sm:h-64 md:h-72 object-cover"
             autoPlay
             loop
             muted
@@ -17,10 +17,10 @@ const VideoCard = () => {
             Your browser does not support the video tag.
           </video>
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent">
-            <div className="absolute bottom-2 left-2">
-              <h2 className="text-white font-bold text-lg">Card Title</h2>
-              <h2 className="text-white font-bold text-lg">Card Title</h2>
-              <h2 className="text-white font-bold text-lg">Card Title</h2>
+            <div className="absolute bottom-4 left-4">
+              <h2 className="text-white font-bold text-xl sm:text-2xl">
+                Card Title
+              </h2>
             </div>
           </div>
         </div>
