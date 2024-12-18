@@ -1,7 +1,12 @@
 import { FC, useEffect, useRef } from "react";
 import { VideoCardProps } from "./VideoCard.type";
 
-const VideoCard: FC<VideoCardProps> = ({ videoSrc, isActive, title }) => {
+const VideoCard: FC<VideoCardProps> = ({
+  videoSrc,
+  isActive,
+  title,
+  videoImage,
+}) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   let timeoutId: NodeJS.Timeout | null = null;
 
@@ -33,6 +38,7 @@ const VideoCard: FC<VideoCardProps> = ({ videoSrc, isActive, title }) => {
         muted
         loop
         playsInline
+        poster={videoImage}
       >
         <source src={videoSrc} type="video/mp4" />
         Your browser does not support the video tag.

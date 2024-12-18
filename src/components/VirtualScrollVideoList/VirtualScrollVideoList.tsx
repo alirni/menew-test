@@ -80,6 +80,7 @@ const VirtualScrollVideoList: FC = () => {
       >
         <VideoCard
           videoSrc={videos[index]?.url || ""}
+          videoImage={videos[index]?.image || ""}
           title={videos[index]?.title || ""}
           isActive={activeIndex === index}
         />
