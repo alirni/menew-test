@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef } from "react";
 import { VideoCardProps } from "./VideoCard.type";
 
-const VideoCard: FC<VideoCardProps> = ({ videoSrc, isActive }) => {
+const VideoCard: FC<VideoCardProps> = ({ videoSrc, isActive, title }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   let timeoutId: NodeJS.Timeout | null = null;
 
@@ -39,7 +39,7 @@ const VideoCard: FC<VideoCardProps> = ({ videoSrc, isActive }) => {
       </video>
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent">
         <h2 className="absolute bottom-4 left-4 text-white text-lg font-bold">
-          Video Title
+          {title}
         </h2>
       </div>
     </div>
