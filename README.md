@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Menew Test
 
-## Getting Started
+This is a project for displaying food-related videos and images using the Pixabay API with virtual scroll. The project uses Next.js and TypeScript to fetch and display the data dynamically.
 
-First, run the development server:
+## Setup
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+To set up the project locally, follow these steps:
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/alirni/menew-test.git
+   ```
+   
+2. Navigate into the project directory:
+
+   ```bash
+   cd menew-test
+   ```
+      
+3. Install the required dependencies:
+
+   ```bash
+   npm install
+   ```
+
+## How to Run
+
+To run the project locally, use the following command:
+   ```bash
+   npm run dev
+   ```
+This will start the Next.js development server. You can view the project by visiting http://localhost:3000 in your browser.
+
+
+### Create .env File and Set API Key
+1.	Create a .env file in the root of your project directory.
+2.	Add the following environment variable in the .env file:
+
+```env
+NEXT_PUBLIC_PIXABAY_API_KEY=your_pixabay_api_key
+NEXT_PUBLIC_PIXABAY_BASE_URL=https://pixabay.com/api/
 ```
+Replace your_pixabay_api_key with your actual Pixabay API key. You can get your API key by signing up on Pixabay.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3.	Once the .env file is created and the API key is set, you can start the project using npm run dev as described above.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
