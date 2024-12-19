@@ -4,12 +4,18 @@ import { FC, useEffect, useRef, useState } from "react";
 import { FixedSizeList as List, ListChildComponentProps } from "react-window";
 import { VideoCard } from "../VideoCard";
 import { Media } from "@/types";
+import useBreakpoint from "use-breakpoint";
+import { BREAKPOINTS } from "@/const";
 
 const VirtualScrollVideoList: FC<{
   media: Media;
 }> = ({ media }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const observer = useRef<IntersectionObserver | null>(null);
+  const { breakpoint } = useBreakpoint(
+    BREAKPOINTS,
+    "mobile"
+  );
 
   const [listHeight, setListHeight] = useState(0);
 
@@ -81,7 +87,8 @@ const VirtualScrollVideoList: FC<{
       height={listHeight} // Height of the container
       itemCount={media.length}
       itemSize={320} // Approximate height of each card
-      width="100%"
+      width={breakpoint === 'mobile' ? '100%' : '50%'}
+      style={{ margin: "auto" }}
     >
       {Row}
     </List>
