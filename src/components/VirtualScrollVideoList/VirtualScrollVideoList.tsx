@@ -3,21 +3,13 @@
 import { FC, useEffect, useRef, useState } from "react";
 import { FixedSizeList as List, ListChildComponentProps } from "react-window";
 import { VideoCard } from "../VideoCard";
-import { VideoData } from "@/types";
-import { fetchVideos } from "@/API/fetchVideos";
+import { Media } from "@/types";
 
-const VirtualScrollVideoList: FC = () => {
-  const [videos, setVideos] = useState<VideoData[]>([]);
+const VirtualScrollVideoList: FC<{
+  media: Media;
+}> = ({ media }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const observer = useRef<IntersectionObserver | null>(null);
-
-  useEffect(() => {
-    const loadVideos = async () => {
-      const data = await fetchVideos();
-      setVideos(data);
-    };
-    loadVideos();
-  }, []);
 
   const [listHeight, setListHeight] = useState(0);
 
@@ -41,10 +33,6 @@ const VirtualScrollVideoList: FC = () => {
               entry.target.getAttribute("data-index") || "0",
               10
             );
-            console.log("VirtualScrollVideoList.tsx:51 >> entry", {
-              entry,
-              index,
-            });
             setActiveIndex(index);
           }
         });
@@ -67,38 +55,33 @@ const VirtualScrollVideoList: FC = () => {
       };
     }, []);
 
-    console.log("VirtualScrollVideoList.tsx:88 >> activeIndex", {
-      activeIndex,
-      index,
-    });
     return (
       <div
         ref={ref}
         data-index={index}
         style={style}
-        className="flex justify-center flex-col p-8 pb-0"
+        className="flex justify-center flex-col px-1 md:p-8 md:pb-0"
       >
         <VideoCard
-          videoSrc={videos[index]?.url || ""}
-          videoImage={videos[index]?.image || ""}
-          title={videos[index]?.title || ""}
+          videoSrc={media[index]?.videos.medium.url || ""}
+          videoImage={media[index]?.videos.medium.thumbnail || ""}
+          title={media[index]?.videos.medium.title || ""}
           isActive={activeIndex === index}
         />
       </div>
     );
   };
 
-  if (videos.length === 0) {
+  if (media.length === 0) {
     return <div className="text-center py-20">Loading videos...</div>;
   }
 
   return (
     <List
       height={listHeight} // Height of the container
-      itemCount={videos.length}
+      itemCount={media.length}
       itemSize={320} // Approximate height of each card
       width="100%"
-      style={{ border: "4px solid red" }}
     >
       {Row}
     </List>
